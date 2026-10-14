@@ -1,0 +1,27 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "report-draft.json",
+  "type": "object",
+  "required": ["summary", "findings"],
+  "additionalProperties": false,
+  "properties": {
+    "summary": {"type": "string"},
+    "findings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "merged_from", "category", "statement"],
+        "additionalProperties": false,
+        "properties": {
+          "id": {"type": "string", "pattern": "R[0-9]+"},
+          "merged_from": {"type": "array", "items": {"type": "string"}},
+          "category": {"enum": ["contradicted", "unspecified", "broken-inference", "missing-scenario",
+                                "nonconformance", "impact", "unsupported-claim",
+                                "unconsidered-alternative", "unnecessary-complexity", "ambiguous",
+                                "inconsistent"]},
+          "statement": {"type": "string"}
+        }
+      }
+    }
+  }
+}

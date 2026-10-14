@@ -1,0 +1,2 @@
+{"must_find": [{"validator": "inference", "category": "broken-inference", "min_severity": "MAJOR"}],
+ "coverage": {"inference": "COMPLETED"}}

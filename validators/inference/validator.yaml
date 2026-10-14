@@ -1,0 +1,12 @@
+name: inference
+version: 1
+kind: agent
+stage: 2
+scope: assumption
+targets: [inference]
+truth_tiers: [T1, T3]
+can_block: true
+max_severity: BLOCKER
+blocker_evidence: [T1]
+cost: medium
+entry: prompt.md

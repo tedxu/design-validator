@@ -1,0 +1,12 @@
+name: fact-check
+version: 1
+kind: agent
+stage: 1
+scope: assumption
+targets: [current-fact, compatibility]
+truth_tiers: [T1]
+can_block: true
+max_severity: BLOCKER
+blocker_evidence: [T1]
+cost: medium
+entry: prompt.md

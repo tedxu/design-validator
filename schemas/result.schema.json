@@ -1,0 +1,86 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "results/<validator>.json",
+  "description": "Fields marked (verify.py) are written by verify.py; validators omit them.",
+  "type": "object",
+  "required": ["validator", "status", "checks", "findings", "evidence"],
+  "additionalProperties": false,
+  "properties": {
+    "validator": {"type": "string"},
+    "status": {"enum": ["COMPLETED", "PARTIAL", "FAILED"]},
+    "status_reason": {"type": ["string", "null"]},
+    "checks": {"type": "array", "items": {"$ref": "#/definitions/check"}},
+    "findings": {"type": "array", "items": {"$ref": "#/definitions/finding"}},
+    "evidence": {"type": "array", "items": {"$ref": "#/definitions/evidence"}}
+  },
+  "definitions": {
+    "ids": {"type": "array", "items": {"type": "string"}},
+    "tier": {"enum": ["T1", "T2", "T3", null]},
+    "check": {
+      "type": "object",
+      "required": ["id", "assumption_ids", "method", "search_scope", "verdict", "evidence_ids"],
+      "additionalProperties": false,
+      "properties": {
+        "id": {"type": "string"},
+        "assumption_ids": {"$ref": "#/definitions/ids"},
+        "method": {"type": "string"},
+        "search_scope": {"type": "string"},
+        "verdict": {"enum": ["PASS", "ISSUE", "INCONCLUSIVE"]},
+        "evidence_ids": {"$ref": "#/definitions/ids"},
+        "claimed_verdict": {"description": "(verify.py)", "enum": ["PASS", "ISSUE", "INCONCLUSIVE"]},
+        "tier": {"description": "(verify.py)", "$ref": "#/definitions/tier"},
+        "grading_note": {"description": "(verify.py)", "type": ["string", "null"]}
+      }
+    },
+    "finding": {
+      "type": "object",
+      "required": ["id", "category", "severity", "statement", "assumption_ids", "check_ids", "evidence_ids"],
+      "additionalProperties": false,
+      "properties": {
+        "id": {"type": "string"},
+        "category": {"enum": ["contradicted", "unspecified", "broken-inference", "missing-scenario",
+                              "nonconformance", "impact", "unsupported-claim",
+                              "unconsidered-alternative", "unnecessary-complexity", "ambiguous",
+                                "inconsistent"]},
+        "severity": {"enum": ["BLOCKER", "MAJOR", "MINOR"]},
+        "statement": {"type": "string"},
+        "assumption_ids": {"$ref": "#/definitions/ids"},
+        "check_ids": {"$ref": "#/definitions/ids"},
+        "evidence_ids": {"$ref": "#/definitions/ids"},
+        "design_anchor": {
+          "type": "object",
+          "required": ["line_start", "line_end"],
+          "additionalProperties": false,
+          "properties": {
+            "line_start": {"type": "integer", "minimum": 1},
+            "line_end": {"type": "integer", "minimum": 1}
+          }
+        },
+        "claimed_severity": {"description": "(verify.py)", "enum": ["BLOCKER", "MAJOR", "MINOR"]},
+        "tier": {"description": "(verify.py)", "$ref": "#/definitions/tier"},
+        "reasoning_only": {"description": "(verify.py)", "type": "boolean"},
+        "grading_note": {"description": "(verify.py)", "type": ["string", "null"]},
+        "audit": {"description": "(verify.py)", "enum": ["confirmed", "disputed", "not-audited"]},
+        "audit_reason": {"description": "(verify.py)", "type": ["string", "null"]}
+      }
+    },
+    "evidence": {
+      "type": "object",
+      "required": ["id", "source", "locator", "excerpt", "relation"],
+      "additionalProperties": false,
+      "properties": {
+        "id": {"type": "string"},
+        "source": {"enum": ["code", "prior", "sandbox", "external", "docs", "history", "design", "reasoning"]},
+        "locator": {"type": "object"},
+        "excerpt": {"type": "string"},
+        "relation": {"enum": ["supports", "refutes"]},
+        "tier": {"description": "(verify.py)", "$ref": "#/definitions/tier"},
+        "verified": {"description": "(verify.py)", "enum": [true, false, "n/a"]},
+        "verify_error": {"description": "(verify.py)", "type": ["string", "null"]},
+        "content_sha256": {"description": "(verify.py)", "type": "string"},
+        "content_origin": {"description": "(verify.py)", "enum": ["commit", "worktree"]},
+        "authoritative": {"description": "(verify.py)", "type": "boolean"}
+      }
+    }
+  }
+}

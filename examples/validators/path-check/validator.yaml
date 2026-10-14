@@ -1,0 +1,11 @@
+name: path-check
+version: 1
+kind: command
+stage: 1
+scope: assumption
+targets: [current-fact, compatibility]
+truth_tiers: [T1]
+can_block: false
+max_severity: MAJOR
+cost: low
+entry: check.py

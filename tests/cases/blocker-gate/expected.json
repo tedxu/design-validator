@@ -1,0 +1,2 @@
+{"must_find": [{"validator": "fact-check", "category": "contradicted", "min_severity": "BLOCKER"}],
+ "coverage": {"completeness": "SKIPPED"}}

@@ -1,0 +1,14 @@
+{
+  "name": "design-validator",
+  "owner": {
+    "name": "Ted Xu"
+  },
+  "description": "Local marketplace for the design-validator plugin.",
+  "plugins": [
+    {
+      "name": "design-validator",
+      "source": "./",
+      "description": "Cross-check a design document against code, project docs, priors and history; report issues, checks performed and coverage."
+    }
+  ]
+}

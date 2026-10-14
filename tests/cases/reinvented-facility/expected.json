@@ -1,0 +1,2 @@
+{"must_find": [{"category": ["unnecessary-complexity", "unconsidered-alternative"], "min_severity": "MINOR"}],
+ "must_not_find": [{"min_severity": "BLOCKER"}]}

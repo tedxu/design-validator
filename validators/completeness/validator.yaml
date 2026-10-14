@@ -1,0 +1,11 @@
+name: completeness
+version: 1
+kind: agent
+stage: 3
+scope: design
+targets: []
+truth_tiers: [T1, T3]
+can_block: false
+max_severity: MAJOR
+cost: medium
+entry: prompt.md

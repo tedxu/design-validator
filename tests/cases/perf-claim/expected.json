@@ -1,0 +1,1 @@
+{"must_find": [{"validator": "claims", "category": "unsupported-claim", "min_severity": "MAJOR"}]}

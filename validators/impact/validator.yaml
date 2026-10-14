@@ -1,0 +1,12 @@
+name: impact
+version: 1
+kind: agent
+stage: 2
+scope: design
+targets: []
+truth_tiers: [T1, T2]
+can_block: true
+max_severity: BLOCKER
+blocker_evidence: [T1]
+cost: high
+entry: prompt.md

@@ -1,0 +1,23 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "matches.json",
+  "type": "object",
+  "required": ["matches"],
+  "additionalProperties": false,
+  "properties": {
+    "matches": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["finding_id", "verdict", "truth_ids", "reason"],
+        "additionalProperties": false,
+        "properties": {
+          "finding_id": {"type": "string", "pattern": "R[0-9]+"},
+          "verdict": {"enum": ["match", "unrelated", "refuted"]},
+          "truth_ids": {"type": "array", "items": {"type": "string", "pattern": "G[0-9]+"}},
+          "reason": {"type": "string"}
+        }
+      }
+    }
+  }
+}

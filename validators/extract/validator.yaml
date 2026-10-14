@@ -1,0 +1,12 @@
+name: extract
+version: 1
+kind: agent
+stage: 0
+scope: design
+targets: []
+truth_tiers: [T1, T2, T3]
+can_block: true
+max_severity: BLOCKER
+blocker_evidence: [ANY]
+cost: low
+entry: prompt.md

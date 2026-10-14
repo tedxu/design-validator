@@ -1,0 +1,12 @@
+name: conformance
+version: 1
+kind: agent
+stage: 1
+scope: design
+targets: []
+truth_tiers: [T1, T2]
+can_block: true
+max_severity: BLOCKER
+blocker_evidence: [T1, authoritative-docs]
+cost: low
+entry: prompt.md

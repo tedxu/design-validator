@@ -1,0 +1,35 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "audit.json",
+  "type": "object",
+  "required": ["reviews"],
+  "additionalProperties": false,
+  "properties": {
+    "reviews": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["finding_id", "verdict", "reason"],
+        "additionalProperties": false,
+        "properties": {
+          "finding_id": {"type": "string"},
+          "verdict": {"enum": ["confirmed", "disputed"]},
+          "reason": {"type": "string"},
+          "external_checks": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["evidence_id", "confirmed"],
+              "additionalProperties": false,
+              "properties": {
+                "evidence_id": {"type": "string"},
+                "confirmed": {"type": "boolean"},
+                "note": {"type": "string"}
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,3 @@
+{"args": "--depth deep",
+ "must_find": [{"validator": "impact", "category": ["impact", "unspecified"], "min_severity": "MAJOR"}],
+ "coverage": {"impact": "COMPLETED"}}

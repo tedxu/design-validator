@@ -1,0 +1,2 @@
+{"must_find": [{"validator": "path-check", "category": "contradicted", "min_severity": "MAJOR"}],
+ "coverage": {"path-check": "COMPLETED"}}

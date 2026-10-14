@@ -1,0 +1,2 @@
+{"must_find": [{"validator": "conformance", "category": "nonconformance", "min_severity": "BLOCKER"}],
+ "coverage": {"completeness": "SKIPPED"}}

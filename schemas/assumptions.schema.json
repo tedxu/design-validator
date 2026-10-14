@@ -1,0 +1,35 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "assumptions.json",
+  "type": "object",
+  "required": ["assumptions"],
+  "additionalProperties": false,
+  "properties": {
+    "assumptions": {"type": "array", "items": {"$ref": "#/definitions/assumption"}}
+  },
+  "definitions": {
+    "assumption": {
+      "type": "object",
+      "required": ["id", "anchor", "statement", "kind", "conditions", "depends_on", "origin"],
+      "additionalProperties": false,
+      "properties": {
+        "id": {"type": "string", "pattern": "A[0-9]+"},
+        "anchor": {
+          "type": "object",
+          "required": ["line_start", "line_end", "quote"],
+          "additionalProperties": false,
+          "properties": {
+            "line_start": {"type": "integer", "minimum": 1},
+            "line_end": {"type": "integer", "minimum": 1},
+            "quote": {"type": "string"}
+          }
+        },
+        "statement": {"type": "string"},
+        "kind": {"enum": ["current-fact", "inference", "compatibility", "invariant", "performance", "design-choice"]},
+        "conditions": {"type": "array", "items": {"type": "string"}},
+        "depends_on": {"type": "array", "items": {"type": "string", "pattern": "A[0-9]+"}},
+        "origin": {"enum": ["explicit", "inferred"]}
+      }
+    }
+  }
+}

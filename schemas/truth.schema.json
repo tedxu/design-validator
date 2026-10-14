@@ -1,0 +1,25 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "truth.json",
+  "type": "object",
+  "required": ["items"],
+  "additionalProperties": false,
+  "properties": {
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "statement", "source", "commits", "tier", "reviewed"],
+        "additionalProperties": false,
+        "properties": {
+          "id": {"type": "string", "pattern": "G[0-9]+"},
+          "statement": {"type": "string"},
+          "source": {"enum": ["revision", "fix"]},
+          "commits": {"type": "array", "items": {"type": "string", "pattern": "[0-9a-f]{7,40}"}},
+          "tier": {"enum": ["T1", "T2"]},
+          "reviewed": {"type": "boolean"}
+        }
+      }
+    }
+  }
+}

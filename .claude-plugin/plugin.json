@@ -1,0 +1,16 @@
+{
+  "name": "design-validator",
+  "version": "0.2.0",
+  "description": "Cross-check a design document against code, project docs, priors and history; report issues, checks performed and coverage.",
+  "author": {
+    "name": "Ted Xu"
+  },
+  "homepage": "https://github.com/tedxu/design-validator",
+  "repository": "https://github.com/tedxu/design-validator",
+  "keywords": [
+    "design-review",
+    "validation",
+    "architecture"
+  ],
+  "license": "MIT"
+}
